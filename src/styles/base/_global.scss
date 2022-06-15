@@ -1,7 +1,10 @@
 :root {
-  --color-dark: #0A2342;
+  --color-dark-1: #262322;
+  --color-dark-2: #63372C;
   --color-light: #FFFDF7;
-  --color-accent: #2CA58D;
+  --color-accent: #C97D60;
+  --color-light-1: #FFBCB5;
+  --color-light-2: #F2E5D7;
 }
 * {
   margin: 0;
@@ -23,5 +26,6 @@ body {
     font-weight: 400;
     line-height: 1.6;
     color: var(--color-dark);
+    background: linear-gradient(45deg, var(--color-light-1), var(--color-light-2));
     min-height: 100vh;
 }

@@ -2,21 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ListComponent } from './list/list.component';
-import { DetailsComponent } from './details/details.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { RecipeComponent } from './recipe/recipe.component';
 
 const COMPONENTS = [
   NavbarComponent,
   ListComponent,
-  DetailsComponent
+  RecipeComponent
 ]
 
 
 @NgModule({
   declarations: [
-    ...COMPONENTS
+    ...COMPONENTS,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule,
   ],
   exports: [
     ...COMPONENTS

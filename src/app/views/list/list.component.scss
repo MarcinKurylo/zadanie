@@ -1,4 +1,10 @@
 .container {
-  background-color: aqua;
   height: 100%;
+  padding: 1rem;
+}
+.list {
+  list-style: none;
+  &__item {
+    padding: 1rem;
+  }
 }
