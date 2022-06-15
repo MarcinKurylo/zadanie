@@ -1,0 +1,15 @@
+.modal {
+  &__header {
+    margin-bottom: 1px solid var(--color-accent);
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    &-close {
+      color: red;
+      font-size: 3rem;
+      position: absolute;
+      right: -1rem;
+      top: -2rem;
+    }
+  }
+}

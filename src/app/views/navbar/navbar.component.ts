@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthorDialogComponent } from '../author-dialog/author-dialog.component';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  public openDialog() {
+      const dialogRef = this.dialog.open(AuthorDialogComponent, {
+        width: '250px',
+      });
   }
 
 }

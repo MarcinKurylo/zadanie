@@ -29,3 +29,9 @@ body {
     background: linear-gradient(45deg, var(--color-light-1), var(--color-light-2));
     min-height: 100vh;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
