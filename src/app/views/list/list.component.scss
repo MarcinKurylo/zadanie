@@ -1,10 +1,17 @@
-.container {
+.list {
   height: 100%;
   padding: 1rem;
-}
-.list {
-  list-style: none;
   &__item {
     padding: 1rem;
+  }
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    &-search {
+      background-color: transparent;
+      border: 1px solid var(--color-accent);
+      padding: 1rem 2rem;
+      border-radius: 2rem;
+    }
   }
 }

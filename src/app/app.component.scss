@@ -14,7 +14,7 @@
     grid-row: 2 /-1 ;
     border-right: 1px solid var(--color-accent);
   }
-  &__recipe {
+  &__details {
     grid-column: 2 / -1;
     grid-row: 2 /-1 ;
   }
@@ -33,7 +33,7 @@
     &__list {
       display: none;
     }
-    &__recipe {
+    &__details {
       grid-column: 1 / -1;
       grid-row: 3 /-1 ;
     }

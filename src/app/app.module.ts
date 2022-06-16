@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { ViewsModule } from './views/views.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog'
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { XApiKeyInterceptor } from './core/interceptors/x-api-key.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,10 +21,13 @@ import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/di
     ViewsModule,
     CoreModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    FontAwesomeModule,
+    HttpClientModule,
   ],
   providers: [
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
+    { provide: HTTP_INTERCEPTORS, useClass: XApiKeyInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
