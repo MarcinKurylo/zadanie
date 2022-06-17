@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventsService } from 'src/app/core/services/events.service';
 import { RecipesService } from 'src/app/core/services/recipes.service';
@@ -10,7 +10,6 @@ import { Recipe } from 'src/app/types/recipe';
   selector: 'app-recipe-form',
   templateUrl: './recipe-form.component.html',
   styleUrls: ['./recipe-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecipeFormComponent implements OnInit {
 
@@ -18,18 +17,24 @@ export class RecipeFormComponent implements OnInit {
     return this.recipeForm.get("ingredients") as FormArray;
   }
 
-  recipeForm!: FormGroup
+  recipeForm: FormGroup = this.formBuilder.group({})
   recipeId: string = ''
+  isLoading = true
 
   constructor(private formBuilder: FormBuilder, private recipesService: RecipesService, private activatedRoute: ActivatedRoute, private router: Router, private eventsService: EventsService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.recipeId = this.activatedRoute.snapshot.parent!.paramMap.get('id')!
-    let recipe
+    this.buildForm()
     if (this.recipeId) {
-      recipe = this.recipesService.recipe$
+      const selectedRecipe = await this.recipesService.getRecipe(this.recipeId).toPromise()
+      delete selectedRecipe?._id
+      selectedRecipe?.ingredients.forEach(ingredient => this.addIngredient(ingredient))
+      this.recipeForm.setValue(selectedRecipe!)
+      this.isLoading = false
+    } else {
+      this.isLoading = false
     }
-    this.buildForm(recipe)
   }
 
   public addIngredient(ingredient?: Ingredient): void {
@@ -59,17 +64,25 @@ export class RecipeFormComponent implements OnInit {
     }
   }
 
-  private buildForm(recipe?: Recipe) {
+  public onCancel() {
+    if (this.recipeId) {
+      this.router.navigate(['recipe', this.recipeId])
+    } else {
+      this.router.navigate(['/'])
+    }
+  }
+
+  private buildForm() {
     this.recipeForm = this.formBuilder.group({
-      name: [recipe?.name ?? '', Validators.required],
-      description: [recipe?.description ?? '', Validators.required],
-      preparationTimeInMinutes: [recipe?.preparationTimeInMinutes ?? '', Validators.required],
+      name: ['', Validators.required, Validators.minLength(3), Validators.maxLength(80)],
+      description: ['', Validators.required, Validators.minLength(15), Validators.maxLength(255)],
+      preparationTimeInMinutes: ['', Validators.required],
       ingredients: this.formBuilder.array([])
     })
     if (!this.recipeId) {
-      this.addIngredient()
-    } else {
-      recipe?.ingredients.forEach(ingredient => this.addIngredient(ingredient))
+      for (let index = 0; index < 2; index++) {
+        this.addIngredient()
+      }
     }
   }
 
