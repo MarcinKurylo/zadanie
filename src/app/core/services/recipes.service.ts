@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tap } from 'rxjs';
 import { Recipe } from '../../types/recipe';
 
 @Injectable({
@@ -7,10 +8,14 @@ import { Recipe } from '../../types/recipe';
 })
 export class RecipesService {
 
+  public recipe$!: Recipe
+
   constructor(private Http: HttpClient) { }
 
   public getRecipe(id: string) {
-    return this.Http.get<Recipe>(`api/recipe/${id}`)
+    return this.Http.get<Recipe>(`api/recipe/${id}`).pipe(
+      tap(recipe => this.recipe$ = recipe)
+    )
   }
 
   public getRecipes() {

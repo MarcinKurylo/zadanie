@@ -1,0 +1,13 @@
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="form">
+  <input id="name" type="text" formControlName="name" class="form__input" placeholder="Name">
+  <textarea cols="30" rows="10" formControlName="description" class="form__input" placeholder="Description"></textarea>
+  <input type="number" id="number" formControlName="preparationTimeInMinutes" class="form__input" placeholder="Preparation time (minutes)">
+  <ng-container *ngFor="let ingredient of ingredientsArray.controls; let i = index" formArrayName="ingredients">
+    <div class="form__ingredient-group" [formGroupName]="i">
+      <input type="text" id="ingredient-name" formControlName="name" class="form__input" placeholder="Ingredient Name">
+      <input type="text" id="ingredient-quantity" formControlName="quantity" class="form__input" placeholder="Ingredient quantity">
+      <button type="button" (click)="addIngredient()" ><fa-icon icon="add"></fa-icon></button>
+    </div>
+  </ng-container>
+  <button class="form__button" type="submit" [disabled]="!recipeForm.valid">Create</button>
+</form>

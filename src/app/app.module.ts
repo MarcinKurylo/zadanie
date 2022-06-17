@@ -10,6 +10,7 @@ import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/di
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { XApiKeyInterceptor } from './core/interceptors/x-api-key.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,8 @@ import { XApiKeyInterceptor } from './core/interceptors/x-api-key.interceptor';
     MatDialogModule,
     FontAwesomeModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},

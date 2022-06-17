@@ -2,7 +2,9 @@
   <div class="list__actions">
     <input type="text" class="list__actions-search">
     <button class="list__actions-add-button">
-      <fa-icon icon="plus"></fa-icon>
+      <a [routerLink]="['/newRecipe']">
+        <fa-icon icon="plus"></fa-icon>
+      </a>
     </button>
   </div>
   <ul class="list__items">

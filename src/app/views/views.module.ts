@@ -5,15 +5,16 @@ import { ListComponent } from './list/list.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { RecipeComponent } from './recipe/recipe.component';
 import { AuthorDialogComponent } from './author-dialog/author-dialog.component';
-import { DetailsComponent } from './details/details.component';
 import { CoreModule } from '../core/core.module';
+import { RecipeFormComponent } from './recipe-form/recipe-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const COMPONENTS = [
   NavbarComponent,
   ListComponent,
   RecipeComponent,
   AuthorDialogComponent,
-  DetailsComponent,
+  RecipeFormComponent,
 ]
 
 
@@ -25,7 +26,9 @@ const COMPONENTS = [
   imports: [
     CommonModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     ...COMPONENTS

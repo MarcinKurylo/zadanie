@@ -1,7 +1,7 @@
 <div *ngIf="recipe" class="recipe">
   <div class="action">
-    <button class="action__button">Edit Recipe <fa-icon icon="edit"></fa-icon></button>
-    <button class="action__button">Delete Selected Recipe <fa-icon icon="ban"></fa-icon></button>
+    <button class="action__button" [routerLink]="['edit']">Edit Selected Recipe <fa-icon icon="edit"></fa-icon></button>
+    <button class="action__button" (click)="deleteRecipe()">Delete Selected Recipe <fa-icon icon="ban"></fa-icon></button>
   </div>
   <h1>{{recipe.name}}</h1>
   <span class="recipe__description">{{ recipe.description }}</span>
@@ -13,3 +13,4 @@
     </ul>
   </details>
 </div>
+<router-outlet></router-outlet>
