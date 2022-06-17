@@ -74,8 +74,8 @@ export class RecipeFormComponent implements OnInit {
 
   private buildForm() {
     this.recipeForm = this.formBuilder.group({
-      name: ['', Validators.required, Validators.minLength(3), Validators.maxLength(80)],
-      description: ['', Validators.required, Validators.minLength(15), Validators.maxLength(255)],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
+      description: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(255)]],
       preparationTimeInMinutes: ['', Validators.required],
       ingredients: this.formBuilder.array([])
     })

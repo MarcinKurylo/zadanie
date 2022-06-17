@@ -5,7 +5,7 @@
   </div>
   <h1>{{recipe.name}}</h1>
   <span class="recipe__description">{{ recipe.description }}</span>
-  <span class="recipe__preparation-time">Preparation time: {{ recipe.preparationTimeInMinutes }}</span>
+  <span class="recipe__preparation-time">Preparation time: {{ recipe.preparationTimeInMinutes | time }}</span>
   <details>
     <summary>Ingredients:</summary>
     <ul>
