@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconsModule } from './icons/icons.module';
 import { TimePipe } from './pipes/time.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 
 @NgModule({
   declarations: [
-    TimePipe
+    TimePipe,
+    FilterPipe
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { TimePipe } from './pipes/time.pipe';
   ],
   exports: [
     IconsModule,
-    TimePipe
+    TimePipe,
+    FilterPipe
   ]
 })
 export class CoreModule { }

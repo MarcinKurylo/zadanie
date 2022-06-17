@@ -12,6 +12,7 @@ import { Recipe } from 'src/app/types/recipe';
 export class ListComponent implements OnInit, OnDestroy {
 
   public recipes: Recipe[] = []
+  public searchFilter: string = ''
   private subscription!: Subscription
 
   constructor(private recipesService: RecipesService, private eventsService: EventsService) { }

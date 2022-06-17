@@ -1,6 +1,6 @@
 <div class="list">
   <div class="list__actions">
-    <input type="text" class="list__actions-search">
+    <input type="text" class="list__actions-search" [(ngModel)]="searchFilter">
     <button class="list__actions-add-button">
       <a [routerLink]="['/newRecipe']">
         <fa-icon icon="plus"></fa-icon>
@@ -8,6 +8,6 @@
     </button>
   </div>
   <ul class="list__items">
-    <li *ngFor="let recipe of recipes" class="list__item"><a [routerLink]="['/recipe', recipe._id]" routerLinkActive="list__item--active">{{recipe.name}}</a></li>
+    <li *ngFor="let recipe of recipes | filter: searchFilter" class="list__item"><a [routerLink]="['/recipe', recipe._id]" routerLinkActive="list__item--active">{{recipe.name}}</a></li>
   </ul>
 </div>
