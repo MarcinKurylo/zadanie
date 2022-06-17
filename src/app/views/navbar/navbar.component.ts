@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthorDialogComponent } from '../author-dialog/author-dialog.component';
 
@@ -12,9 +12,9 @@ export class NavbarComponent {
   constructor(public dialog: MatDialog) { }
 
   public openDialog() {
-      const dialogRef = this.dialog.open(AuthorDialogComponent, {
-        width: '250px',
-      });
+    const dialogRef = this.dialog.open(AuthorDialogComponent, {
+      width: '250px',
+    });
   }
 
 }

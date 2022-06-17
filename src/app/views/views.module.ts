@@ -8,6 +8,7 @@ import { AuthorDialogComponent } from './author-dialog/author-dialog.component';
 import { CoreModule } from '../core/core.module';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DeleteConfirmComponent } from './recipe-form/delete-confirm/delete-confirm.component';
 
 const COMPONENTS = [
   NavbarComponent,
@@ -21,6 +22,7 @@ const COMPONENTS = [
 @NgModule({
   declarations: [
     ...COMPONENTS,
+    DeleteConfirmComponent,
 
   ],
   imports: [

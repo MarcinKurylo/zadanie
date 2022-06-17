@@ -3,6 +3,9 @@
   padding: 1rem;
   &__item {
     padding: 1rem;
+    &--active {
+      color: var(--color-accent);
+    }
   }
   &__actions {
     display: flex;

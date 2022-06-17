@@ -6,11 +6,8 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './author-dialog.component.html',
   styleUrls: ['./author-dialog.component.scss']
 })
-export class AuthorDialogComponent implements OnInit {
+export class AuthorDialogComponent {
 
   constructor(public dialogRef: MatDialogRef<AuthorDialogComponent>) { }
-
-  ngOnInit(): void {
-  }
 
 }

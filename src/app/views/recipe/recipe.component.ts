@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Subscription } from 'rxjs';
 import { EventsService } from 'src/app/core/services/events.service';
 import { RecipesService } from 'src/app/core/services/recipes.service';
 import { Recipe } from 'src/app/types/recipe';
+import { DeleteConfirmComponent } from '../recipe-form/delete-confirm/delete-confirm.component';
 
 @Component({
   selector: 'app-recipe',
@@ -16,7 +18,7 @@ export class RecipeComponent implements OnInit, OnDestroy {
   public mode: 'edit' | 'read' = 'read'
   private subscription!: Subscription
 
-  constructor(private route: ActivatedRoute,private recipesService: RecipesService, private router: Router, private eventsService: EventsService) { }
+  constructor(private route: ActivatedRoute,private recipesService: RecipesService, private router: Router, private eventsService: EventsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.route.paramMap
@@ -34,6 +36,17 @@ export class RecipeComponent implements OnInit, OnDestroy {
       window.alert('Recipe deleted')
       this.eventsService.emit({action: 'delete'})
       this.router.navigate(['/'])
+    })
+  }
+
+  public openDialog() {
+    const dialogRef = this.dialog.open(DeleteConfirmComponent, {
+      width: '500px',
+    });
+    dialogRef.afterClosed().subscribe(data => {
+      if(data === 'delete') {
+        this.deleteRecipe()
+      }
     })
   }
 
