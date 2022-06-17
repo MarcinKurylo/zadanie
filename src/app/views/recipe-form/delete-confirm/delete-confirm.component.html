@@ -5,8 +5,8 @@
 <div mat-dialog-content>
   Please confirm deletion
   <div class="modal__actions">
-    <button mat-button (click)="dialogRef.close()">Cancel</button>
-    <button mat-button (click)="dialogRef.close('delete')">Confirm</button>
+    <button mat-button (click)="dialogRef.close()" class="modal__actions-btn">Cancel</button>
+    <button mat-button (click)="dialogRef.close('delete')" class="modal__actions-btn">Confirm</button>
 
   </div>
 </div>

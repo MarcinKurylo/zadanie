@@ -1,12 +1,17 @@
 .modal {
+  &__actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    &-btn {
+      border-bottom: 1px solid var(--color-accent);
+    }
+  }
   &__header {
     margin-bottom: 1px solid var(--color-accent);
     display: flex;
     justify-content: space-between;
     position: relative;
-    &__actions {
-      display: inline-block;
-    }
     &-close {
       color: red;
       font-size: 3rem;
